@@ -14,7 +14,7 @@ export default function StartPage({ setGameStart }: StartPageProps) {
   return (
     <motion.div
       exit={{ y: ["0vh", "-5vh", "100vh"] }}
-      transition={{ duration: "0.5", ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex flex-col justify-center items-center"
     >
       <h1 className="text-6xl md:text-8xl text-center bg-blue-950 p-8 rounded-xl select-none">
