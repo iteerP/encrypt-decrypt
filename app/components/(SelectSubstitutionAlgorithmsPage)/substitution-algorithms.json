@@ -1,9 +1,9 @@
 {
     "substitution_algorithms": [
-      "Caesar Cipher",
-      "Atbash Cipher",
-      "ROT13",
-      "Polybius Square"
+      {"algorithmName": "Caesar Cipher", "redirectLink": "/substitution-algorithms/caeser-cipher"},
+      {"algorithmName": "Atbash Cipher", "redirectLink": "/substitution-algorithms/atbash-cipher"},
+      {"algorithmName": "ROT13", "redirectLink": "/substitution-algorithms/rot13"},
+      {"algorithmName":"Polybius Square", "redirectLink": "/substitution-algorithms/polybius-square"}
     ]
   }
   

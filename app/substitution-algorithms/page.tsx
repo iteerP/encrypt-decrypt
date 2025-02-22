@@ -15,8 +15,9 @@ export default function page() {
         {substitutionAlgorithms.map((substitutionAlgorithm, idx) => (
           <SubstitutionAlgorithmCard
             key={idx}
+            algorithmName={substitutionAlgorithm.algorithmName}
+            redirectLink={substitutionAlgorithm.redirectLink}
             delay={idx * 0.1}
-            algorithmName={substitutionAlgorithm}
           />
         ))}
       </div>
