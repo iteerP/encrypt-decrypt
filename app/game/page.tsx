@@ -43,9 +43,13 @@ export default function GamePage() {
 
   const [showStartModal, setShowStartModal] = useState(true);
   const [showEndModal, setShowEndModal] = useState(false);
+
   const [timer, setTimer] = useState(180); // 3-minute timer (in seconds)
   const [score, setScore] = useState(0);
+
+  const [encrypted, setEncryped] = useState(true);
   const [currentChallenge, setCurrentChallenge] = useState("");
+
   const [userInput, setUserInput] = useState("");
 
   // Start timer when modal is closed
@@ -67,18 +71,21 @@ export default function GamePage() {
   const generateChallenge = () => {
     const words = ["HELLO", "WORLD", "NEXTJS", "REACT", "TYPESCRIPT"];
     const word = words[Math.floor(Math.random() * words.length)];
-    const encrypt = Math.random() > 0.5; // 50% chance to encrypt or decrypt
+    setCurrentChallenge(word);
+    setEncryped(Math.random() > 0.5); // 50% chance to encrypt or decrypt
 
-    if (encrypt) {
-      setCurrentChallenge(algorithm.encrypt(word));
-    } else {
-      setCurrentChallenge(word); // Show decrypted word, user must enter the encrypted form
-    }
+    console.log(
+      encrypted ? currentChallenge : algorithm.encrypt(currentChallenge)
+    );
   };
 
   // Handle user answer submission
   const handleSubmit = () => {
-    if (userInput.toUpperCase() === currentChallenge) {
+    if (
+      (encrypted && userInput.toUpperCase() === currentChallenge) ||
+      (!encrypted &&
+        userInput.toUpperCase() === algorithm.encrypt(currentChallenge))
+    ) {
       setScore((prev) => prev + 1);
       generateChallenge();
       setUserInput("");
@@ -96,7 +103,8 @@ export default function GamePage() {
           {String(timer % 60).padStart(2, "0")}
         </p>
         <p className="mt-4 text-xl font-semibold">
-          Challenge: {currentChallenge}
+          {encrypted ? "Decrypt" : "Encrypt"}:{" "}
+          {encrypted ? algorithm.encrypt(currentChallenge) : currentChallenge}
         </p>
 
         <input

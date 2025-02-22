@@ -1,8 +1,18 @@
-function rot13Encrypt(text: string) {
-  return text.replace(/[a-zA-Z]/g, (char) => {
-    const base = char < "a" ? 65 : 97;
-    return String.fromCharCode(((char.charCodeAt(0) - base + 13) % 26) + base);
-  });
+function rot13Encrypt(text: string): string {
+  const encryptedText = [];
+
+  for (let idx = 0; idx < text.length; idx++) {
+    let charAscii = text[idx].toLowerCase().charCodeAt(0);
+    charAscii += 13;
+
+    if (charAscii > "z".charCodeAt(0)) {
+      charAscii = charAscii - "z".charCodeAt(0) - 1 + "a".charCodeAt(0);
+    }
+
+    encryptedText.push(String.fromCharCode(charAscii));
+  }
+
+  return encryptedText.join("");
 }
 
 export default rot13Encrypt;
