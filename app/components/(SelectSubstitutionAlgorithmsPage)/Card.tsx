@@ -23,7 +23,7 @@ export default function SubstitutionAlgorithmCard({
     <motion.button
       initial={{ y: "-200vh" }}
       animate={{ y: 0 }}
-      transition={{ delay: delay, ease: "easeOut", duration: 1 }}
+      transition={{ delay: delay, ease: "easeOut", duration: 0.5 }}
       className="w-full aspect-[4/3] h-full min-h-[200px] sm:min-h-[200px] bg-blue-300 flex flex-col items-center justify-center text-white text-xl font-bold shadow-lg rounded-lg hover:bg-blue-400 duration-300 opacity-90 hover:opacity-100 border-2 border-black"
       onClick={() => {
         setTimeout(() => router.push(redirectLink), 500);
