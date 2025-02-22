@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`relative ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Game background */}
+        <Image
+          src={"/background.webp"}
+          alt="game background"
+          className="absolute -z-[1] object-cover md:object-center lg:object-[0%_40%]"
+          fill
+          priority
+        />
         {children}
       </body>
     </html>
