@@ -252,7 +252,9 @@ export default function GameComponent() {
       {showEndModal && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg text-center">
-            <h2 className="text-2xl font-bold">Game Over!</h2>
+            <h2 className="text-2xl font-bold">
+              Game Over! The answer was {currentChallenge.toUpperCase()}
+            </h2>
             <p className="mt-2 text-lg">
               Your Score: <strong>{score}</strong>
             </p>
