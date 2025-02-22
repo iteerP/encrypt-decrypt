@@ -16,6 +16,7 @@ export default function page() {
           <SubstitutionAlgorithmCard
             key={idx}
             algorithmName={substitutionAlgorithm.algorithmName}
+            algorithmDescription={substitutionAlgorithm.algorithmDescription}
             redirectLink={substitutionAlgorithm.redirectLink}
             delay={idx * 0.1}
           />

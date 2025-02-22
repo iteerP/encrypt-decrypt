@@ -1,9 +1,25 @@
 {
     "substitution_algorithms": [
-      {"algorithmName": "Caesar Cipher", "redirectLink": "/substitution-algorithms/caeser-cipher"},
-      {"algorithmName": "Atbash Cipher", "redirectLink": "/substitution-algorithms/atbash-cipher"},
-      {"algorithmName": "ROT13", "redirectLink": "/substitution-algorithms/rot13"},
-      {"algorithmName":"Polybius Square", "redirectLink": "/substitution-algorithms/polybius-square"}
+      {
+        "algorithmName": "Caesar Cipher",
+        "redirectLink": "/substitution-algorithms/caeser-cipher",
+        "algorithmDescription": "A shift cipher where each letter is replaced by another a fixed number of positions down the alphabet. Simple but vulnerable to frequency analysis."
+      },
+      {
+        "algorithmName": "Atbash Cipher",
+        "redirectLink": "/substitution-algorithms/atbash-cipher",
+        "algorithmDescription": "A monoalphabetic cipher where the alphabet is reversed (A ↔ Z, B ↔ Y). Easy to break due to predictability."
+      },
+      {
+        "algorithmName": "ROT13",
+        "redirectLink": "/substitution-algorithms/rot13",
+        "algorithmDescription": "A Caesar cipher variation that shifts letters by 13 places. Applying it twice returns the original text. Often used for simple text obfuscation."
+      },
+      {
+        "algorithmName": "Polybius Square",
+        "redirectLink": "/substitution-algorithms/polybius-square",
+        "algorithmDescription": "Replaces letters with numerical coordinates in a 5×5 grid (e.g., A = 11, B = 12). Can encode messages into numbers but is easy to decipher."
+      }
     ]
   }
   
