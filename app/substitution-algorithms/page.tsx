@@ -2,8 +2,8 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import SubstitutionAlgorithmCard from "../components/(SelectEncryptionAlgorithmsPage)/Card";
-import substitutionAlgorithmsData from "../components/(SelectEncryptionAlgorithmsPage)/encryption-algorithms.json";
+import SubstitutionAlgorithmCard from "../components/(SelectSubstitutionAlgorithmsPage)/Card";
+import substitutionAlgorithmsData from "../components/(SelectSubstitutionAlgorithmsPage)/substitution-algorithms.json";
 
 export default function page() {
   const substitutionAlgorithms =
