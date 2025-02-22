@@ -42,7 +42,7 @@ export default function GamePage() {
   const algorithm =
     algorithmKey in algorithms
       ? algorithms[algorithmKey as keyof typeof algorithms]
-      : algorithms["caesar"];
+      : algorithms["caesar-cipher"];
 
   const [showStartModal, setShowStartModal] = useState(true);
   const [showEndModal, setShowEndModal] = useState(false);
