@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import caesarCipherEncrypt from "@/utility/substitution-algorithms/caeser-cypher";
 import atbashCipherEncrypt from "@/utility/substitution-algorithms/atbash-cipher";
 import rot13Encrypt from "@/utility/substitution-algorithms/rot13";
@@ -11,29 +11,32 @@ const algorithms = {
   caesar: {
     name: "Caesar Cipher",
     encrypt: (text: string) => caesarCipherEncrypt(text, 3),
-    description: "Shifts letters by a fixed amount (e.g., A → D for shift 3).",
+    description:
+      "One of the oldest ciphers, used by Julius Caesar to secure military messages. It shifts letters forward by a fixed amount (default: 3). Despite its simplicity, it was effective in ancient Rome!",
   },
   atbash: {
     name: "Atbash Cipher",
     encrypt: (text: string) => atbashCipherEncrypt(text),
     description:
-      "Reverses the alphabet (A ↔ Z, B ↔ Y, etc.), making it simple to decrypt.",
+      "An ancient cipher from Hebrew cryptography, where A ↔ Z, B ↔ Y, etc. It's so simple that decryption requires no key—just apply it again! It was used in biblical texts to hide secret meanings.",
   },
   rot13: {
     name: "ROT13",
     encrypt: (text: string) => rot13Encrypt(text),
     description:
-      "A variation of the Caesar cipher that shifts each letter by 13 places.",
+      "A special case of the Caesar cipher that shifts letters by 13 places. Fun fact: applying ROT13 twice returns the original text! It's often used in internet forums to obscure spoilers.",
   },
   polybius: {
     name: "Polybius Square",
     encrypt: (text: string) => polybiusEncrypt(text),
     description:
-      "Replaces letters with coordinates from a 5x5 grid (e.g., A = 11, B = 12).",
+      "Developed by the Greek historian Polybius, this cipher converts letters into numbers based on a 5×5 grid (e.g., A = 11, B = 12). It was later adapted for telegraph systems and early espionage!",
   },
 };
 
 export default function GamePage() {
+  const router = useRouter();
+
   const searchParams = useSearchParams();
   const algorithmKey = searchParams.get("algorithm") || "caesar";
   const algorithm =
@@ -69,22 +72,120 @@ export default function GamePage() {
 
   // Generate random words and encrypt/decrypt them
   const generateChallenge = () => {
-    const words = ["HELLO", "WORLD", "NEXTJS", "REACT", "TYPESCRIPT"];
+    const words = [
+      "butter",
+      "fish",
+      "tree",
+      "tiger",
+      "sky",
+      "fish",
+      "star",
+      "cat",
+      "train",
+      "stone",
+      "sky",
+      "star",
+      "ocean",
+      "hope",
+      "horse",
+      "piano",
+      "cloud",
+      "candy",
+      "cup",
+      "rabbit",
+      "cup",
+      "rabbit",
+      "smile",
+      "run",
+      "puzzle",
+      "lake",
+      "light",
+      "silver",
+      "bat",
+      "butter",
+      "sugar",
+      "fish",
+      "candy",
+      "chair",
+      "sugar",
+      "school",
+      "shadow",
+      "ocean",
+      "hope",
+      "blue",
+      "garden",
+      "cat",
+      "bat",
+      "ocean",
+      "cloud",
+      "ocean",
+      "star",
+      "cup",
+      "grape",
+      "tiger",
+      "map",
+      "rocket",
+      "bell",
+      "star",
+      "camera",
+      "beach",
+      "shadow",
+      "horse",
+      "candy",
+      "bat",
+      "house",
+      "fire",
+      "camera",
+      "pen",
+      "silver",
+      "box",
+      "forest",
+      "beach",
+      "winter",
+      "dog",
+      "hope",
+      "castle",
+      "sky",
+      "camera",
+      "ocean",
+      "box",
+      "energy",
+      "chair",
+      "sky",
+      "rain",
+      "garden",
+      "tiger",
+      "house",
+      "ocean",
+      "smile",
+      "winter",
+      "world",
+      "cup",
+      "king",
+      "win",
+      "door",
+      "train",
+      "bell",
+      "cat",
+      "rain",
+      "bat",
+      "bat",
+      "game",
+      "bat",
+      "beach",
+    ];
     const word = words[Math.floor(Math.random() * words.length)];
-    setCurrentChallenge(word);
+    setCurrentChallenge(word.toLowerCase());
     setEncryped(Math.random() > 0.5); // 50% chance to encrypt or decrypt
-
-    console.log(
-      encrypted ? currentChallenge : algorithm.encrypt(currentChallenge)
-    );
   };
 
   // Handle user answer submission
   const handleSubmit = () => {
+    console.log(currentChallenge);
     if (
-      (encrypted && userInput.toUpperCase() === currentChallenge) ||
+      (encrypted && userInput.toLowerCase() === currentChallenge) ||
       (!encrypted &&
-        userInput.toUpperCase() === algorithm.encrypt(currentChallenge))
+        userInput.toLowerCase() === algorithm.encrypt(currentChallenge))
     ) {
       setScore((prev) => prev + 1);
       generateChallenge();
@@ -104,7 +205,9 @@ export default function GamePage() {
         </p>
         <p className="mt-4 text-xl font-semibold">
           {encrypted ? "Decrypt" : "Encrypt"}:{" "}
-          {encrypted ? algorithm.encrypt(currentChallenge) : currentChallenge}
+          {encrypted
+            ? algorithm.encrypt(currentChallenge).toUpperCase()
+            : currentChallenge.toUpperCase()}
         </p>
 
         <input
@@ -128,10 +231,18 @@ export default function GamePage() {
             <h2 className="text-2xl font-bold">{algorithm.name}</h2>
             <p className="mt-2">{algorithm.description}</p>
             <button
-              className="bg-green-500 text-white p-3 mt-4"
+              className="bg-green-500 text-white px-6 py-3 mt-4"
               onClick={startGame}
             >
               Start Game
+            </button>
+            <button
+              className="bg-blue-300 text-white px-6 py-3 mt-4 ml-4"
+              onClick={() => {
+                router.push("/substitution-algorithms");
+              }}
+            >
+              Exit
             </button>
           </div>
         </div>
