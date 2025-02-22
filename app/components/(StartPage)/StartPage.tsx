@@ -23,7 +23,9 @@ export default function StartPage({ setGameStart }: StartPageProps) {
       <button
         onClick={() => {
           setGameStart((prev) => !prev);
-          router.push("/substitution-algorithms");
+          setTimeout(() => {
+            router.push("/substitution-algorithms");
+          }, 500);
         }}
         className="min-w-[300px] w-[30vw] mt-6 text-4xl md:text-5xl bg-blue-400 duration-500 py-4 border-[3px] border-blue-400 hover:bg-blue-500 hover:rounded-xl hover:border-blue-900 select-none"
       >

@@ -10,10 +10,7 @@ export default function page() {
     substitutionAlgorithmsData["substitution_algorithms"];
 
   return (
-    <motion.div
-      transition={{ delay: 1 }}
-      className="h-screen w-screen flex justify-center items-center"
-    >
+    <motion.div className="h-screen w-screen flex justify-center items-center">
       <div className="h-[70vh] w-[85vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 p-4 overflow-y-auto">
         {substitutionAlgorithms.map((substitutionAlgorithm, idx) => (
           <SubstitutionAlgorithmCard
