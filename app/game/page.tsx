@@ -8,13 +8,13 @@ import rot13Encrypt from "@/utility/substitution-algorithms/rot13";
 import polybiusEncrypt from "@/utility/substitution-algorithms/polybius-encrypt";
 
 const algorithms = {
-  caesar: {
+  "caesar-cipher": {
     name: "Caesar Cipher",
     encrypt: (text: string) => caesarCipherEncrypt(text, 3),
     description:
       "One of the oldest ciphers, used by Julius Caesar to secure military messages. It shifts letters forward by a fixed amount (default: 3). Despite its simplicity, it was effective in ancient Rome!",
   },
-  atbash: {
+  "atbash-cipher": {
     name: "Atbash Cipher",
     encrypt: (text: string) => atbashCipherEncrypt(text),
     description:
@@ -26,7 +26,7 @@ const algorithms = {
     description:
       "A special case of the Caesar cipher that shifts letters by 13 places. Fun fact: applying ROT13 twice returns the original text! It's often used in internet forums to obscure spoilers.",
   },
-  polybius: {
+  "polybius-square": {
     name: "Polybius Square",
     encrypt: (text: string) => polybiusEncrypt(text),
     description:
@@ -47,7 +47,7 @@ export default function GamePage() {
   const [showStartModal, setShowStartModal] = useState(true);
   const [showEndModal, setShowEndModal] = useState(false);
 
-  const [timer, setTimer] = useState(180); // 3-minute timer (in seconds)
+  const [timer, setTimer] = useState(60); // 1-minute timer (in seconds)
   const [score, setScore] = useState(0);
 
   const [encrypted, setEncryped] = useState(true);
@@ -260,12 +260,20 @@ export default function GamePage() {
               className="bg-blue-500 text-white p-3 mt-4"
               onClick={() => {
                 setScore(0);
-                setTimer(180);
+                setTimer(60);
                 setShowStartModal(true);
                 setShowEndModal(false);
               }}
             >
               Play Again
+            </button>
+            <button
+              className="bg-blue-300 text-white px-6 py-3 mt-4 ml-4"
+              onClick={() => {
+                router.push("/substitution-algorithms");
+              }}
+            >
+              Exit
             </button>
           </div>
         </div>
