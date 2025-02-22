@@ -4,10 +4,16 @@ import React from "react";
 import { motion } from "motion/react";
 import SubstitutionAlgorithmCard from "../components/(SelectSubstitutionAlgorithmsPage)/Card";
 import substitutionAlgorithmsData from "../components/(SelectSubstitutionAlgorithmsPage)/substitution-algorithms.json";
+import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function SubstitutionAlgorithms() {
   const substitutionAlgorithms =
     substitutionAlgorithmsData["substitution_algorithms"];
+
+  const router = useRouter();
+  const handleSelect = (algorithm: string) => {
+    router.push(`/game?algorithm=${algorithm.toLowerCase().replace(" ", "-")}`);
+  };
 
   return (
     <motion.div className="h-screen w-screen flex justify-center items-center">
@@ -17,7 +23,7 @@ export default function page() {
             key={idx}
             algorithmName={substitutionAlgorithm.algorithmName}
             algorithmDescription={substitutionAlgorithm.algorithmDescription}
-            redirectLink={substitutionAlgorithm.redirectLink}
+            handleSelect={handleSelect}
             delay={idx * 0.1}
           />
         ))}
