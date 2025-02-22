@@ -2,14 +2,27 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import SubstitutionAlgorithmCard from "../components/(SelectEncryptionAlgorithmsPage)/Card";
+import substitutionAlgorithmsData from "../components/(SelectEncryptionAlgorithmsPage)/encryption-algorithms.json";
 
 export default function page() {
+  const substitutionAlgorithms =
+    substitutionAlgorithmsData["substitution_algorithms"];
+
   return (
     <motion.div
-      transition={{ delay: 0.5 }}
-      className="h-screen grid place-content-center text-6xl"
+      transition={{ delay: 1 }}
+      className="h-screen w-screen flex justify-center items-center"
     >
-      ENCRYPTION ALGORITHMS
+      <div className="h-[70vh] w-[85vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 p-4 overflow-y-auto">
+        {substitutionAlgorithms.map((substitutionAlgorithm, idx) => (
+          <SubstitutionAlgorithmCard
+            key={idx}
+            delay={idx * 0.1}
+            algorithmName={substitutionAlgorithm}
+          />
+        ))}
+      </div>
     </motion.div>
   );
 }

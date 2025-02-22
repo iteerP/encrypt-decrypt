@@ -1,0 +1,10 @@
+{
+    "substitution_algorithms": [
+      "Caesar Cipher",
+      "Atbash Cipher",
+      "ROT13",
+      "Polybius Square",
+      "Affine Cipher"
+    ]
+  }
+  

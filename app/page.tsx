@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import StartPage from "./components/StartPage";
+import StartPage from "./components/(StartPage)/StartPage";
 import { AnimatePresence } from "motion/react";
 
 export default function Home() {
