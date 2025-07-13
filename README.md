@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Encrypt Decrypt 🔐
 
-## Getting Started
+> Master the Art of Cryptography, One Puzzle at a Time!
 
-First, run the development server:
+An interactive educational game built with Next.js that teaches classical cryptography through hands-on gameplay. Players learn about substitution ciphers by encrypting and decrypting messages in timed challenges.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎮 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Interactive Learning**: Learn cryptography through gameplay rather than theory
+- **Multiple Cipher Types**: Practice with 4 different substitution algorithms
+- **Timed Challenges**: 60-second rounds to test your speed and accuracy
+- **Dual Mode Gameplay**: Both encryption and decryption challenges
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Animated UI**: Smooth transitions and engaging visual feedback
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧮 Supported Algorithms
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Caesar Cipher
+One of the oldest ciphers, used by Julius Caesar to secure military messages. Shifts letters forward by a fixed amount (default: 3 positions).
 
-## Learn More
+### Atbash Cipher
+An ancient cipher from Hebrew cryptography where the alphabet is reversed (A ↔ Z, B ↔ Y, etc.). Applying it twice returns the original text.
 
-To learn more about Next.js, take a look at the following resources:
+### ROT13
+A special case of the Caesar cipher that shifts letters by 13 places. Commonly used in internet forums to obscure spoilers.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Polybius Square
+Developed by Greek historian Polybius, converts letters into numerical coordinates based on a 5×5 grid (e.g., A = 11, B = 12).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 How to Play
 
-## Deploy on Vercel
+1. **Start the Game**: Click "Start" on the homepage
+2. **Choose Algorithm**: Select from one of the four substitution ciphers
+3. **Read Instructions**: Learn about the selected algorithm in the modal
+4. **Play**: You have 60 seconds to encrypt/decrypt as many words as possible
+   - **Encrypt Mode**: Convert the plain text to cipher text
+   - **Decrypt Mode**: Convert the cipher text back to plain text
+6. **Score**: Earn points for each correct answer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 Educational Value
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project demonstrates:
+- **Classical Cryptography**: Historical cipher methods and their applications
+- **Pattern Recognition**: Understanding letter frequency and substitution patterns
+- **Problem Solving**: Quick thinking under time pressure
+- **Mathematical Concepts**: Modular arithmetic in Caesar cipher variants
